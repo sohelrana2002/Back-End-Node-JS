@@ -20,6 +20,7 @@ const fs = require('fs');
 
 
 // ==========rename file name===========
-fs.renameSync("write.txt", "readWrite.txt");
+// fs.renameSync("write.txt", "readWrite.txt");
 
-
+// =========update content without overriding==========
+// fs.appendFileSync("readWrite.txt", ", Update content");
