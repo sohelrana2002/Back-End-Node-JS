@@ -5,7 +5,7 @@
 // 3. write file
 // 4. update content
 // 5. rename file
-// 6. delete file
+// 6. read file
 
 const fs = require("fs");
 
@@ -26,6 +26,11 @@ const fs = require("fs");
 // });
 
 // ===========rename file==========
-fs.rename("CRUD-Async/data.txt", "CRUD-Async/readWrite.txt", (err) => {
-    console.log("Rename file name successfully");
+// fs.rename("CRUD-Async/data.txt", "CRUD-Async/readWrite.txt", (err) => {
+//     console.log("Rename file name successfully");
+// });
+
+// =============read file==========
+fs.readFile("CRUD-Async/readWrite.txt", "utf-8", (err, data) => {
+    console.log(data);
 });
