@@ -32,5 +32,6 @@ const fs = require("fs");
 
 // =============read file==========
 fs.readFile("CRUD-Async/readWrite.txt", "utf-8", (err, data) => {
+    // console.log(err);
     console.log(data);
 });
