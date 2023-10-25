@@ -3,12 +3,20 @@
 const http = require("http");
 // console.log(http);
 const url = require("url");
+const fs = require("fs");
 
 // ============create server========
 const server = http.createServer((req, res) =>{
+    const data = fs.readFileSync(`${__dirname}/userApi/userApi.json`, "utf-8");
+
+    const objDta = JSON.parse(data);
+
+    console.log(objDta);
+
+
     // =======make different type of routing========
     if(req.url === "/"){
-        res.end("This is home page");
+        res.end(objDta[0].name);
     }
     else if(req.url === "/about"){
         res.end("This is about page");
@@ -26,6 +34,6 @@ const server = http.createServer((req, res) =>{
     }
 });
 
-server.listen(7000, "192.168.0.102", () =>{
+server.listen(2000, "192.168.0.103", () =>{
     console.log("Listening to the port no 7000");
 })

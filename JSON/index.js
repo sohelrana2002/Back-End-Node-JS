@@ -36,9 +36,9 @@ const jsonData = JSON.stringify(myBio);
 
 
 // ==============read data from json file================
-// fs.readFile("jsonFile.json", "utf-8", (err, data) =>{
-//     // console.log(data);
-// })
+fs.readFile("jsonFile.json", "utf-8", (err, data) =>{
+    // console.log(data);
+})
 // ============read data from json(output)=========
 // {
 //     "name": "Sohel Rana",
@@ -49,11 +49,11 @@ const jsonData = JSON.stringify(myBio);
 
 
 // ===========again convert orginal data(obj)===========
-fs.readFile("jsonFile.json", "utf-8", (err, data) => {
-    // console.log(data);
-    const orgObj = JSON.parse(data);
-    console.log(orgObj);
-})
+// fs.readFile("jsonFile.json", "utf-8", (err, data) => {
+//     // console.log(data);
+//     const orgObj = JSON.parse(data);
+//     console.log(orgObj);
+// })
 // ===========again convert orginal data(obj)(output)===========
 // {
 //     name: 'Sohel Rana',
