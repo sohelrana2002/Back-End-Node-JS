@@ -17,15 +17,21 @@ server.on("request", (req, res) =>{
     // -------create readable stream----------
     const rStream = fs.createReadStream('input.txt');
 
-    rStream.on("data", (chunkDta) =>{
-        res.write(chunkDta);
-    });
-    rStream.on("end", () =>{
-        res.end();
-    });
-    rStream.on("error", (err) =>{
-        res.end(`file not found \n${err}`)
-    })
+    // ------------1st way------------
+    // rStream.on("data", (chunkDta) =>{
+    //     res.write(chunkDta);
+    // });
+    // rStream.on("end", () =>{
+    //     res.end();
+    // });
+    // rStream.on("error", (err) =>{
+    //     res.end(`file not found \n${err}`)
+    // });
+
+
+    // ------------2nd way---------------
+    // --pipe() method works read and right in a same time----
+    rStream.pipe(res);
 
 });
 
