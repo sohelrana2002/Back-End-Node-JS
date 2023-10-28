@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const hbs = require('hbs');
 const app = express();
 
 
@@ -18,10 +19,41 @@ const app = express();
 
 
 // console.log(path.join(__dirname, "../public"));
-const staticPath = path.join(__dirname, "../public");
+// const staticPath = path.join(__dirname, "../public");
+
+const templatePath = path.join(__dirname, "../src/templates")
+
+
+// =========get data from template direcorty=========
+app.set('view engine', 'hbs');
+app.set("views", templatePath);
+
+
+// ==========define template engine route===========
+app.get("/", (req, res) =>{
+    res.render("index");
+});
+
+app.get("/about", (req, res) =>{
+    res.render("about");
+});
+
+
+// =======to set the view engine=========
+// app.set('view engine', 'hbs');
+
+
+// ==========define template engine route===========
+// app.get("/", (req, res) =>{
+//     res.render("index",{
+//         dynamicData: "This data come from dynamic(I just add more data in dynamic way)"
+//     });
+// });
+
+
 
 // =======serve static page though bulting middleware======
-app.use(express.static(staticPath))
+// app.use(express.static(staticPath));
 
 
 // ----------create routing-----------
