@@ -1,5 +1,7 @@
 const express = require("express");
+const path = require("path");
 const app = express();
+
 
 // console.log(app);
 // ---------express js have lot of method----
@@ -12,6 +14,15 @@ const app = express();
 4. put - update data
 5. delete - delete your data
 */
+// ===========always used absulate path in express js============
+
+
+// console.log(path.join(__dirname, "../public"));
+const staticPath = path.join(__dirname, "../public");
+
+// =======serve static page though bulting middleware======
+app.use(express.static(staticPath))
+
 
 // ----------create routing-----------
 app.get("/", (req, res) =>{
