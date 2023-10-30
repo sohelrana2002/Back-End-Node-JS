@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const hbs = require('hbs');
+const { log } = require("console");
 const app = express();
 
 
@@ -21,12 +22,17 @@ const app = express();
 // console.log(path.join(__dirname, "../public"));
 // const staticPath = path.join(__dirname, "../public");
 
-const templatePath = path.join(__dirname, "../src/templates")
+const templatePath = path.join(__dirname, "../src/templates/views");
+// const partialsPath =path.join(__dirname + "./templates/partials");
+console.log(partialsPath);
+// hbs.registerPartials(__dirname + '/views/partials');
+
 
 
 // =========get data from template direcorty=========
 app.set('view engine', 'hbs');
 app.set("views", templatePath);
+hbs.registerPartial(__dirname + "./templates/partials");
 
 
 // ==========define template engine route===========
@@ -116,7 +122,7 @@ app.get("c", (req, res) =>{
 
 
 
-app.listen(2000, "192.168.0.102", () =>{
+app.listen(2000, "192.168.43.189", () =>{
     console.log("Listing from port 2000");
 });
 
