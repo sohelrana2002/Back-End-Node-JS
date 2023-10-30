@@ -266,3 +266,59 @@
 
 
 
+// ===========update data from collection field (only one data)==========
+// ---$set operator replace the value of the field with the specific value--
+// command 
+// db.collectionName.updateOne({query: "valueName"}, {$set: {key: "value"}})
+
+// examaple 
+// db.employeeData.updateOne({name: "Fahim Rahman"}, {$set: {sub: "CSE"}})
+//  feedback from command 
+// {
+//     acknowledged: true,
+//     insertedId: null,
+//     matchedCount: 1,
+//     modifiedCount: 1,
+//     upsertedCount: 0
+// }
+
+// updated value output 
+// {
+//     _id: ObjectId("653fe19aefc708dd052a8060"),
+//     name: 'Fahim Rahman',
+//     age: 20,
+//     sub: 'CSE'
+// }
+
+
+// ========if age 23 then update active key value to false ============
+// ===========update data from collection field (multiple data)==========
+// ---$set operator replace the value of the field with the specific value--
+// command 
+// db.collectionName.updateMany({query: "valueName"}, {$set: {key: "value"}})
+
+// examaple 
+// db.employeeData.updateMany({age: 23}, {$set: {active: false}})
+//  feedback from command 
+// {
+//     acknowledged: true,
+//     insertedId: null,
+//     matchedCount: 2,
+//     modifiedCount: 2,
+//     upsertedCount: 0
+// }
+// updated value output 
+// {
+//     _id: ObjectId("653feea2efc708dd052a8065"),
+//     name: 'Feroz Kobir',
+//     age: 23,
+//     sub: 'BBA',
+//     active: false
+// },
+// {
+//     _id: ObjectId("653fef5defc708dd052a8066"),
+//     name: 'Nazmus Sakib',
+//     age: 23,
+//     sub: 'Animal Husbandy',
+//     active: false
+// }
