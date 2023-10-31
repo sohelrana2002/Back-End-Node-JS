@@ -117,12 +117,16 @@ const EmployeeData = new mongoose.model("EmployeeData", employeeInfoSchema);
 //   ]
 
 // ==========read data from database (specific data)========
-// const getDocument = async () =>{
-//     const result = await EmployeeData.find({name: "Sohel Rana"});
-//     console.log(result);
-// };
+// ====select operator work how want type of data want to show===
+// ===limit meand how much data want to show=======
+const getDocument = async () =>{
+    const result = await EmployeeData.find({sub: "CSE"})
+    .select({name: 1})
+    .limit(1);
+    console.log(result);
+};
 
-// getDocument();
+getDocument();
 
 // output
 // [
