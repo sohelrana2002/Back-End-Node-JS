@@ -9,18 +9,18 @@
 // local      40.00 KiB
 
 // ==============how to create collections=========
-// command 
+// command
 // use collectionsNmae
 
-// example 
-// use employee 
+// example
+// use employee
 
 // output
-// switched db to employee 
+// switched db to employee
 
 
 // ===========how to switched in collection directory=======
-// command 
+// command
 // db collectionName
 // example
 // db employee
@@ -29,17 +29,17 @@
 // switched on db employee
 
 // =========how to check active database===========
-// command 
-// db 
+// command
+// db
 
-// output 
+// output
 // your active database
 
 // ==========how to insert one data in collection=========
-// command 
+// command
 //db.collectionData.insertOne({});
 
-// example 
+// example
 // db.employeeData.insertOne({name: "Sohel Rana", age: 21, shift: "Night"})
 
 // output
@@ -50,10 +50,10 @@
 
 
 // ==========how to insert multiple data in collection=========
-// command 
+// command
 //db.collectionData.insertMany({});
 
-// example 
+// example
 // db.employeeData.insertMnay([{name: "Sohel Rana", age: 21, shift: "Night"},{name: "Fahim Rahman", age: 20, sub: "EEE"}])
 
 // output
@@ -69,13 +69,13 @@
 
 
 // ==========how to read data from database collection===========
-// command 
+// command
 //db.collectionDataName.find().pretty().----pretty() work like json format
 
-// example 
+// example
 // db.employeeData.find().pretty()
 
-// output 
+// output
 // [
 //     {
 //         _id: ObjectId("653fdb9358cc65f42f086b4c"),
@@ -113,13 +113,13 @@
 
 
 // ==========read specific value from collections=========
-// command 
+// command
 // db.collectionDataName.find({query: "valueName"});
 
-// example 
+// example
 // db.employeeData.find({name: "Sohel Rana"}).pretty()
 
-// output 
+// output
 // [
 //     {
 //       _id: ObjectId("653fdb9358cc65f42f086b4c"),
@@ -132,13 +132,13 @@
 
 
 // ==========read specific value from collections (only name)=========
-// command 
+// command
 // db.collectionDataName.find({query: "valueName"}, projection);
 
-// example 
+// example
 // db.employeeData.find({name: "Sohel Rana"}, {name: 1}).pretty()
 
-// output 
+// output
 // [
 //     {
 //       _id: ObjectId("653fdb9358cc65f42f086b4c"),
@@ -151,13 +151,13 @@
 
 // ==========read specific value from collections (only name)
 //  without id also=========
-// command 
+// command
 // db.collectionDataName.find({query: "valueName"}, projection);
 
-// example 
+// example
 // db.employeeData.find({name: "Sohel Rana"}, {_id: 0, name: 1}).pretty()
 
-// output 
+// output
 // [
 //     {
 //       name: 'Sohel Rana',
@@ -167,13 +167,13 @@
 
 
 // ==========read without specific value from collections =========
-// command 
+// command
 // db.collectionDataName.find({query: "valueName"}, projection);
 
-// example 
+// example
 // db.employeeData.find({name: "Sohel Rana"}, {name: 0}).pretty()
 
-// output 
+// output
 // [{
 //     _id: ObjectId("653fdb9358cc65f42f086b4c"),
 //     age: 21, sub: 'CSE'
@@ -182,13 +182,13 @@
 
 
 // ===========how to filtering in collention========
-// command 
+// command
 // db.employeeDataName.find({query: "valueName"}).pretty()
 
-// example 
+// example
 // db.employeeData.find({active: ture}).pretty()
 
-// output 
+// output
 // [
 //     {
 //       _id: ObjectId("653feea2efc708dd052a8065"),
@@ -208,13 +208,13 @@
 
 
 // =========filter your data from collection with only one data==========
-// command 
+// command
 // db.employeeDataName.find({query: "valueName"}).pretty().limit()
 
-// example 
+// example
 // db.employeeData.find({active: ture}).pretty().limit(1)
 
-// output 
+// output
 // [
 //     {
 //       _id: ObjectId("653feea2efc708dd052a8065"),
@@ -229,13 +229,13 @@
 
 
 // =========filter your data from collection with only one data (another method)==========
-// command 
+// command
 // db.employeeDataName.find({query: "valueName"})
 
-// example 
+// example
 // db.employeeData.findOne({active: ture})
 
-// output 
+// output
 // {
 //     _id: ObjectId("653feea2efc708dd052a8065"),
 //     name: 'Feroz Kobir',
@@ -247,13 +247,13 @@
 
 
 // =========filter your data from collection with only one data skip first field==========
-// command 
+// command
 // db.employeeDataName.find({query: "valueName"}).pretty().limit(1).skip(1)
 
-// example 
+// example
 // db.employeeData.find({active: ture}).pretty().limit(1).skip(1)
 
-// output 
+// output
 // [
 //     {
 //       _id: ObjectId("653fef5defc708dd052a8066"),
@@ -268,12 +268,12 @@
 
 // ===========update data from collection field (only one data)==========
 // ---$set operator replace the value of the field with the specific value--
-// command 
+// command
 // db.collectionName.updateOne({query: "valueName"}, {$set: {key: "value"}})
 
-// examaple 
+// examaple
 // db.employeeData.updateOne({name: "Fahim Rahman"}, {$set: {sub: "CSE"}})
-//  feedback from command 
+//  feedback from command
 // {
 //     acknowledged: true,
 //     insertedId: null,
@@ -282,7 +282,7 @@
 //     upsertedCount: 0
 // }
 
-// updated value output 
+// updated value output
 // {
 //     _id: ObjectId("653fe19aefc708dd052a8060"),
 //     name: 'Fahim Rahman',
@@ -294,12 +294,12 @@
 // ========if age 23 then update active key value to false ============
 // ===========update data from collection field (multiple data)==========
 // ---$set operator replace the value of the field with the specific value--
-// command 
+// command
 // db.collectionName.updateMany({query: "valueName"}, {$set: {key: "value"}})
 
-// examaple 
+// examaple
 // db.employeeData.updateMany({age: 23}, {$set: {active: false}})
-//  feedback from command 
+//  feedback from command
 // {
 //     acknowledged: true,
 //     insertedId: null,
@@ -307,7 +307,7 @@
 //     modifiedCount: 2,
 //     upsertedCount: 0
 // }
-// updated value output 
+// updated value output
 // {
 //     _id: ObjectId("653feea2efc708dd052a8065"),
 //     name: 'Feroz Kobir',
@@ -322,3 +322,36 @@
 //     sub: 'Animal Husbandy',
 //     active: false
 // }
+
+
+
+// ==========delete operation=============
+// {
+//     _id: ObjectId("653fe55aefc708dd052a8062"),
+//         name: 'Danddy',
+//             age: 30,
+//                 sub: 'Cse'
+// },delet the data from collection
+// command
+// db.collectionDataName.deleteMany({query: "valueName"})
+// example
+// db.employeeData.deleteMany({name: "danddy"});
+//  feedback from command
+// { 
+//   acknowledged: true,
+//   deletedCount: 1
+// };
+
+
+
+// ==========how to delete all data from collection===========
+// command 
+// db.collectionDataName.deleteMany({});
+// example
+// db.employeeData.deleteMany({});
+
+//  feedback from command
+// { 
+//   acknowledged: true,
+//   deletedCount: 7
+// };
