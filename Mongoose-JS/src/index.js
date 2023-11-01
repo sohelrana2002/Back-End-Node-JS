@@ -10,13 +10,37 @@ mongoose.connect("mongodb://127.0.0.1:27017/employeeInfo")
 
 
 // -------------create Schema------------
+// const employeeInfoSchema = new mongoose.Schema({
+//     name: {
+//         type: String,
+//         required: true
+//     },
+//     age: Number,
+//     sub: String,
+//     active: Boolean
+// });
+
+// /*A model is a class with which we construct documents. */
+
+// // ----------create model----------
+// const EmployeeData = new mongoose.model("EmployeeData", employeeInfoSchema);
+
+
+
+// ==========create schema with validator==========
 const employeeInfoSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        lowercase: true,
+        trim: true
     },
     age: Number,
-    sub: String,
+    sub: {
+        type: String,
+        lowercase: true,
+        enum: ["cse", "eee", "english"]
+    },
     active: Boolean
 });
 
@@ -27,23 +51,23 @@ const EmployeeData = new mongoose.model("EmployeeData", employeeInfoSchema);
 
 
 // ==========create document with only one data=============
-// const createDocument = async () =>{
-//     try{
-//         const officeEmployeeData = new EmployeeData({
-//             name: "Danddy",
-//             age: 60,
-//             sub: "Bangla",
-//             active: false
-//         });
+const createDocument = async () =>{
+    try{
+        const officeEmployeeData = new EmployeeData({
+            name: "New danddy boy",
+            age: 60,
+            sub: "English",
+            active: false
+        });
 
-//         const result = await officeEmployeeData.save();
-//         console.log(result);
-//     }catch(err){
-//         console.log(err);
-//     }
-// };
+        const result = await officeEmployeeData.save();
+        console.log(result);
+    }catch(err){
+        console.log(err);
+    }
+};
 
-// createDocument();
+createDocument();
 
 
 // ==========create document with multiple data============
@@ -405,13 +429,13 @@ const EmployeeData = new mongoose.model("EmployeeData", employeeInfoSchema);
 // deleteDocument("6542313a2b914737776d8026");
 
 // ======delete document with show in console======
-const deleteDocument = async (_id) =>{
-    try{
-        const result = await EmployeeData.findByIdAndDelete({_id});
-        console.log(result);
-    }catch(err){
-        console.log(err);
-    }
-}
+// const deleteDocument = async (_id) =>{
+//     try{
+//         const result = await EmployeeData.findByIdAndDelete({_id});
+//         console.log(result);
+//     }catch(err){
+//         console.log(err);
+//     }
+// }
 
-deleteDocument("65423b263fef56a37e476d6e");
+// deleteDocument("65423b263fef56a37e476d6e");
