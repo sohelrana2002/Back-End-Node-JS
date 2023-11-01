@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const validator = require("validator")
 
 // ========connect with mongodb===========
 mongoose.connect("mongodb://127.0.0.1:27017/employeeInfo")
@@ -27,7 +28,50 @@ mongoose.connect("mongodb://127.0.0.1:27017/employeeInfo")
 
 
 
-// ==========create schema with validator==========
+// // ==========create schema with validator==========
+// const employeeInfoSchema = new mongoose.Schema({
+//     name: {
+//         type: String,
+//         required: true,
+//         lowercase: true,
+//         trim: true
+//     },
+//     age: Number,
+//     sub: {
+//         type: String,
+//         lowercase: true,
+//         enum: ["cse", "eee", "english"]
+//     },
+//     active: Boolean
+// });
+
+// ==========create schema with custom validator==========
+// const employeeInfoSchema = new mongoose.Schema({
+//     name: {
+//         type: String,
+//         required: true,
+//         lowercase: true,
+//         trim: true
+//     },
+//     age: {
+//         type: Number,
+//         validate(value){
+//             if(value < 0){
+//                 throw new Error(`${value} is negative Age`);
+//             }
+//         }
+//     },
+//     sub: {
+//         type: String,
+//         lowercase: true,
+//         enum: ["cse", "eee", "english"]
+//     },
+//     active: Boolean
+// });
+
+
+
+// =========npm validator==========
 const employeeInfoSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -35,14 +79,35 @@ const employeeInfoSchema = new mongoose.Schema({
         lowercase: true,
         trim: true
     },
-    age: Number,
+    age: {
+        type: Number,
+        validate(value){
+            if(value < 0){
+                throw new Error(`${value} is negative Age`);
+            }
+        }
+    },
     sub: {
         type: String,
         lowercase: true,
         enum: ["cse", "eee", "english"]
     },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+        lowercase: true,
+        validate(value){
+            if(!validator.isEmail(value)){
+                throw new Error("Email is not valid");
+            }
+        }
+    },
     active: Boolean
 });
+
+
+
 
 /*A model is a class with which we construct documents. */
 
@@ -55,8 +120,9 @@ const createDocument = async () =>{
     try{
         const officeEmployeeData = new EmployeeData({
             name: "New danddy boy",
-            age: 60,
+            age: 69,
             sub: "English",
+            email: "DDANDDY@gmail.com",
             active: false
         });
 
