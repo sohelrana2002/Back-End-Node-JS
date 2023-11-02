@@ -12,19 +12,71 @@ app.use(express.json());
 //     res.send("from home page ")
 // });
 
+// =========create user data========
 app.post("/student-registration", async(req, res) =>{
-    console.log(req.body);
+    // console.log(req.body);
     try{
         const user = new Student(req.body);
-        const userData = await user.save();
-        console.log(userData);
-        res.status(201).send(userData);
+        const createUser = await user.save();
+        // console.log(createUser);
+        if(!createUser){
+            res.status(404).send();
+        }else{
+            res.status(201).send(createUser);
+        };
     }catch(err){
         res.status(404).send(err);
     }
 
     // res.send("Student Registration page");
 });
+
+
+// =========read/get users data==========
+app.get("/student-registration", async(req, res) =>{
+    try{
+        const getUsers = await Student.find();
+        if(!getUsers){
+            res.status(404).send();
+        }else{
+            res.status(201).send(getUsers);
+        }
+    }catch(err){
+        res.status(404).send(err);
+    }
+});
+
+// ========read/get user data(individual with id)=======
+app.get("/student-registration/:id", async (req, res) =>{
+    try{
+        const _id = req.params.id;
+        // =======getUser singular for only id======
+        const getUser = await Student.findById(_id);
+        if(!getUser){
+            res.status(201).send();
+        }else{
+            res.status(404).send(getUser);
+            // console.log(getUser);
+        }
+    }catch(err){
+        res.send(err);
+    }
+});
+
+// ========read/get user data(individual with name)=======
+app.get("/student-registration/:name", async (req, res) =>{
+    try{
+        const name = req.params.name;
+        const getName = await Student.find(name);
+        res.send(getName);
+        console.log(getName);
+    }catch(err){
+        res.send(err);
+    }
+})
+
+
+
 
 app.listen(port,"192.168.43.189", () =>{
     console.log(`Listen from port ${port}`);
