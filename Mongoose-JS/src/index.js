@@ -1,14 +1,12 @@
 const mongoose = require("mongoose");
-const validator = require("validator")
+const validator = require("validator");
 
 // ========connect with mongodb===========
 mongoose.connect("mongodb://127.0.0.1:27017/employeeInfo")
 .then(() => console.log('Connected!'))
 .catch((err) => console.log(err));
 
-
 /* schema: A mongoose schema defines the structureof the document default value, validator, etc... */
-
 
 // -------------create Schema------------
 // const employeeInfoSchema = new mongoose.Schema({
@@ -72,39 +70,39 @@ mongoose.connect("mongodb://127.0.0.1:27017/employeeInfo")
 
 
 // =========npm validator==========
-const employeeInfoSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-        lowercase: true,
-        trim: true
-    },
-    age: {
-        type: Number,
-        validate(value){
-            if(value < 0){
-                throw new Error(`${value} is negative Age`);
-            }
-        }
-    },
-    sub: {
-        type: String,
-        lowercase: true,
-        enum: ["cse", "eee", "english"]
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true,
-        lowercase: true,
-        validate(value){
-            if(!validator.isEmail(value)){
-                throw new Error("Email is not valid");
-            }
-        }
-    },
-    active: Boolean
-});
+// const employeeInfoSchema = new mongoose.Schema({
+//     name: {
+//         type: String,
+//         required: true,
+//         lowercase: true,
+//         trim: true
+//     },
+//     age: {
+//         type: Number,
+//         validate(value){
+//             if(value < 0){
+//                 throw new Error(`${value} is negative Age`);
+//             }
+//         }
+//     },
+//     sub: {
+//         type: String,
+//         lowercase: true,
+//         enum: ["cse", "eee", "english"]
+//     },
+//     email: {
+//         type: String,
+//         required: true,
+//         unique: true,
+//         lowercase: true,
+//         validate(value){
+//             if(!validator.isEmail(value)){
+//                 throw new Error("Email is not valid");
+//             }
+//         }
+//     },
+//     active: Boolean
+// });
 
 
 
