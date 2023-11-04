@@ -92,6 +92,22 @@ app.patch("/student-registration/:id", async (req, res) =>{
     }catch(err){
         res.status(404).send(err);
     }
+});
+
+// ========delete user data though by id===========
+app.delete("/student-registration/:id", async (req, res) =>{
+    try{
+        const _id = req.params.id;
+        const deleteUser = await Student.findByIdAndDelete(_id);
+
+        if(!deleteUser){
+            res.status(404).send();
+        }else{
+            res.status(201).send(deleteUser);
+        }
+    }catch(err){
+        res.status(404).send(err);
+    }
 })
 
 
